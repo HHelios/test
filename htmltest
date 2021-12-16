@@ -1,0 +1,237 @@
+<html>
+
+<head>
+	<title>Pear Factory!</title>
+</head>
+
+<script>
+
+<!--Total Pears-->
+var pears= 0;
+
+<!--Upgrade Levels-->
+let upgrade_amount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+<!--Upgrade Amounts-->
+let upgrade_price = [20, 100, 500, 2500, 12500, 62500, 312500, 1562500, 7812500]
+
+<!--Pear Click Variables-->
+var p = 0;
+var p_multiplyer = 1;
+
+<!--Pears Per Click-->
+var ppc = ((1+p)*p_multiplyer);
+
+<!--Main Pear Click-->
+function ClickPear() {
+	pears += ppc;
+	pear_counter = document.getElementById("pears");
+    pear_counter.innerHTML = pears;
+	HighlightStore();
+}
+
+<!--Highlight Avialable Upgrades-->
+function HighlightStore(){
+for(i=0;i<=10;i++){
+	if (pears >= upgrade_price[i]){
+document.getElementById(i).className = "upgradeOpacity";
+	} else {
+document.getElementById(i).className = "upgrade";	}
+}
+
+</script>
+
+<style>
+
+body{
+  user-select: none; 
+  overflow: hidden;
+}
+
+table, th, td {
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;	
+}
+
+th {
+  width: 50%;	
+}
+
+h3 {
+  text-align: center;
+  font-family: verdana;
+  font-size: 225%;
+  padding: 30px 5px 0;
+}   
+
+.numBox {
+  margin: auto;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  border: 5px solid;
+  border-radius: 10px;
+  background-color: white;
+  width: 300px;
+  height: 60px;    
+}
+
+.upgrade {
+  opacity: .5;
+}
+
+.upgrade:hover {
+  opacity: .65;
+}
+
+.upgradeOpacity {
+  opacity: 1;
+}
+
+.upgradeOpacity:hover {
+  opacity: .85;
+}
+
+.float-container {
+  padding: 20px;
+}
+
+.float-child {
+  width: auto;
+  float: left;
+  padding: 20px;
+}
+
+.scrollable {
+  overflow-y: scroll;
+  height: 550px;
+}
+	
+.buyable {
+  background-color: pink;
+  display: flex;
+  padding: 10px 20px;
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.buyable_price  {
+  font-size: 24px;
+  align-self: center;
+  text-align: right;
+}
+
+.buyable_amount {
+  font-size: 24px;
+  align-self: center;
+  text-align: left;
+}
+
+.buyable_effect {
+  font-size: 12px;
+}
+
+#pearPic {
+ draggable: false; 
+ content: url(https://preview.pngtab.com/t/4/25/5/Sg4K8gtDja/potato-black-and-white-brunswick-stew-organic-food-soup.jpg);
+ width: 25%;
+ }
+ 
+#pearPic:hover {
+  transform: scale(1.1);
+ }
+ 
+</style>
+    
+<body>
+	<table>
+		<colgroup>
+			<col span="1">
+			<col span="1" style="background-color: rgba(128,0,0,.75);">
+		</colgroup>
+		
+		<tr>
+			<th>
+				<h3 style="color: maroon;"> PEAR </h3>
+			<th style="border:5px solid;">
+				<h3 style="color: white;"> FACTORY </h3>
+		</tr>
+		
+		<tr>
+			<th>
+				<img id = "pearPic"  onclick = "ClickPear();"></div>
+				<div id = "picking"></div>
+				<br>
+				<p> Number of PEARS: </p>
+				<div class ="numBox" id = "pears"> 0 </div>
+				<div class ="numBox" id = "upgradeLevel"> 0 Pears Per Sec </div>
+				<p> Intructions: Click the PEAR! </p>
+			</th>
+			
+			<th style="border:5px solid;">
+				<div class ="scrollable">
+				
+					<div id ="1" class="upgrade" onclick="UpgradeClick(1)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p1" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pear Picker <div><br></div><div class="buyable_effect"> +1 Pear Every Second </div></th>
+					<th style="width:30%"><div id ="price1" class="buyable_price"> $20 </div></th></tr></table></div></div>
+					
+					<div id ="2" class="upgrade" onclick="UpgradeClick(2)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p2" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Plentiful Pears <div><br></div><div class="buyable_effect"> +1 Pear Per Click </div></th>
+					<th style="width:30%"><div id ="price2" class="buyable_price"> $100 </div></th></tr></table></div></div>
+					
+					<div id ="3" class="upgrade" onclick="UpgradeClick(3)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p3" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pear Plantation <div><br></div><div class="buyable_effect"> +5 Pears Per Second </div></th>
+					<th style="width:30%"><div id ="price3" class="buyable_price"> $500 </div></th></tr></table></div></div>
+					
+					<div id ="4" class="upgrade" onclick="UpgradeClick(4)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p4" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pristine Pears <div><br></div><div class="buyable_effect"> +.5X Pears Per Click </div></th>
+					<th style="width:30%"><div id ="price4" class="buyable_price"> $2500 </div></th></tr></table></div></div>
+					
+					<div id ="5" class="upgrade" onclick="UpgradeClick(5)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p5" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pear Paradise <div><br></div><div class="buyable_effect"> +2X Pears Per Second </div></th>
+					<th style="width:30%"><div id ="price5" class="buyable_price"> $12500 </div></th></tr></table></div></div>
+					
+					<div id ="6" class="upgrade" onclick="UpgradeClick(6)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p6" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Perfect Pears <div><br></div><div class="buyable_effect"> +[PLACEHOLDER] </div></th>
+					<th style="width:30%"><div id ="price6" class="buyable_price"> $62500 </div></th></tr></table></div></div>
+					
+					<div id ="7" class="upgrade" onclick="UpgradeClick(7)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p7" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Painless Picking <div><br></div><div class="buyable_effect"> +[PLACEHOLDER] </div></th>
+					<th style="width:30%"><div id ="price7" class="buyable_price"> $312500 </div></th></tr></table></div></div>
+					
+					<div id ="8" class="upgrade" onclick="UpgradeClick(8)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p8" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pear Priority <div><br></div><div class="buyable_effect"> +[PLACEHOLDER] </div></th>
+					<th style="width:30%"><div id ="price8" class="buyable_price"> $1562500 </div></th></tr></table></div></div>
+					
+					<div id ="9" class="upgrade" onclick="UpgradeClick(9)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p9" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pear Pandamonium <div><br></div><div class="buyable_effect"> +[PLACEHOLDER] </div></th>
+					<th style="width:30%"><div id ="price9" class="buyable_price"> $7812500 </div></th></tr></table></div></div>
+					
+					<div id ="10" class="upgrade" onclick="UpgradeClick(10)"><div class="buyable"><table><tr>
+					<th style="width:30%"><div id ="p10" class="buyable_amount"> 0 </div></th>
+					<th style="width:40%"> Pearpocalypse <div><br></div><div class="buyable_effect"> +1 Pear Every Second </div></th>
+					<th style="width:30%"><div id ="price10" class="buyable_price"> $39062500 </div></th></tr></table></div></div>
+						
+				</div>
+			</th>
+		</tr>	
+	</table>
+	
+</body>
+
+</html>
